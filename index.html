@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasky</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="barra-superior">
+      <div class="contenedor-busqueda">
+        <input id="inputBusqueda" type="search" placeholder="Buscar tareas">
+      </div>
+      <div class="acciones-superiores">
+        <button id="botonAgregarTarea" class="boton-primario">+ Agregar tarea</button>
+      </div>
+    </header>
+
+    <section class="filtros">
+      <label>Materia <input id="filtroMateria" type="text" placeholder="Todas"></label>
+      <label>Prioridad
+        <select id="filtroPrioridad">
+          <option value="">Todas</option>
+          <option value="Alta">Alta</option>
+          <option value="Media">Media</option>
+          <option value="Baja">Baja</option>
+        </select>
+      </label>
+      <label>Ordenar por
+        <select id="selectorOrden">
+          <option value="fecha">Fecha entrega</option>
+          <option value="prioridad">Prioridad</option>
+          <option value="estado">Estado</option>
+        </select>
+      </label>
+    </section>
+
+    <section id="tablero" class="tablero"></section>
+  </main>
+
+  <div id="ventanaModal" class="contenedor-modal oculto">
+    <div class="contenido-modal">
+      <header class="cabecera-modal">
+        <h2 id="tituloModal">Nueva tarea</h2>
+        <button id="cerrarModal" class="boton-secundario">x</button>
+      </header>
+      <form id="formularioTarea">
+        <input type="hidden" id="idTarea">
+        <label>Fecha de entrega <input required id="fechaEntrega" type="date"></label>
+        <label>Materia / Área <input required id="materia" type="text" maxlength="40"></label>
+        <label>Prioridad
+          <select required id="prioridad">
+            <option value="Alta">Alta</option>
+            <option value="Media">Media</option>
+            <option value="Baja">Baja</option>
+          </select>
+        </label>
+        <label>Estado
+          <select required id="estado">
+            <option value="En curso">En curso</option>
+            <option value="Completada">Completada</option>
+            <option value="Retrasada">Retrasada</option>
+          </select>
+        </label>
+        <label>Título <input required id="titulo" type="text" maxlength="60"></label>
+        <label>Descripción <textarea required id="descripcion" rows="3" maxlength="280"></textarea></label>
+        <div class="acciones-formulario">
+          <button type="button" id="botonCancelar" class="boton-secundario">Cancelar</button>
+          <button type="submit" class="boton-primario">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <template id="plantillaTarjeta">
+    <article class="tarjeta">
+      <div class="tarjeta-superior">
+        <div class="grupo-etiquetas"></div>
+        <div class="menu-tarjeta">
+          <button class="boton-secundario boton-icono boton-editar" title="Editar">✎</button>
+          <button class="boton-secundario boton-icono boton-eliminar" title="Eliminar">🗑</button>
+        </div>
+      </div>
+      <h3 class="titulo-tarjeta"></h3>
+      <p class="descripcion-tarjeta"></p>
+      <div class="pie-tarjeta">
+        <div class="acciones-tarjeta">
+          <button class="boton-secundario boton-icono boton-detalles" title="Detalle">Detalles</button>
+          <button class="boton-secundario boton-icono boton-completar" title="Completar">Completar</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
